@@ -45,7 +45,7 @@ class ExampleDataset(torch.utils.data.Dataset):
             resize_size (tuple, optional): Size to resize the images to. Default is (224, 224).
         """
         self.root_dir = root_dir
-        self.samples = [d for d in sorted(os.listdir(root_dir)) if os.path.isdir(os.path.join(root_dir, d))]
+        self.samples = [d for d in sorted(os.listdir(root_dir)) if os.path.isdir(os.path.join(root_dir, d)) and d.startswith("data_")]
         self.resize = torchvision.transforms.Resize(resize_size)
         self.image_transform = image_transform
         self.text_tokenizer = text_tokenizer
